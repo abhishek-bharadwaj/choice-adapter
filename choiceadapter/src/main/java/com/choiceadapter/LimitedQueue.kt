@@ -44,6 +44,14 @@ class LimitedQueue<T>(private val maxSize: Int) {
     fun contains(t: T) = queue.contains(t)
 
     /**
+     * Returns first index of [t], or -1 if the collection does not contain element.
+     *
+     * * @param t object to be checked for containment in this queue
+     * * @return {@code int}
+     */
+    fun indexOf(t: T) = queue.indexOf(t)
+
+    /**
      * Returns an array containing all of the elements in this queue
      * in proper sequence (from first to last element).
      *

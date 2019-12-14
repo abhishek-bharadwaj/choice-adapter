@@ -62,9 +62,12 @@ class ChoiceAdapter(
     private val onChoiceClick = View.OnClickListener { view ->
         val choice = view.getTag(R.id.choice_data) as Choice
         if (selectedChoices.contains(choice)) {
+            val indexOfItemToRemoved = selectedChoices.indexOf(choice)
             selectedChoices.remove(choice)
+            notifyItemChanged(indexOfItemToRemoved)
         } else {
             selectedChoices.add(choice)
+            notifyItemChanged(choices.size - 1)
         }
         notifyDataSetChanged()
     }
