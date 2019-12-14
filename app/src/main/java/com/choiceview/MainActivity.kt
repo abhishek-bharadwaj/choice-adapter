@@ -3,6 +3,7 @@ package com.choiceview
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_test_choice.view.*
@@ -22,11 +23,27 @@ class MainActivity : AppCompatActivity(), ChoiceAdapter.ChoiceCallback {
     }
 
     override fun onChoiceSelected(choice: Choice, view: View) {
-        view.tv.text = "This is selected now"
+        view.tv.apply {
+            text = "This is selected now"
+            setBackgroundColor(
+                ContextCompat.getColor(
+                    this@MainActivity,
+                    android.R.color.holo_blue_light
+                )
+            )
+        }
     }
 
     override fun onChoiceUnSelected(choice: Choice, view: View) {
-        view.tv.text = "This is unselected now"
+        view.tv.apply {
+            text = "This is unselected now"
+            setBackgroundColor(
+                ContextCompat.getColor(
+                    this@MainActivity,
+                    android.R.color.holo_green_light
+                )
+            )
+        }
     }
 
     class Option(val id: Int) : Choice {
@@ -38,6 +55,10 @@ class MainActivity : AppCompatActivity(), ChoiceAdapter.ChoiceCallback {
 
         override fun hashCode(): Int {
             return id
+        }
+
+        override fun toString(): String {
+            return "Option: $id"
         }
     }
 }

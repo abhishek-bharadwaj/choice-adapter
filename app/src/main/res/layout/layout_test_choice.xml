@@ -9,5 +9,5 @@
     android:fontFamily="sans-serif"
     android:padding="16dp"
     android:text="This is default state"
-    android:textColor="#333"
+    android:textColor="#fff"
     tools:text="This is a TextView" />

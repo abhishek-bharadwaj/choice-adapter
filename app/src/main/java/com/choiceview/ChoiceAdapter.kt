@@ -48,10 +48,10 @@ class ChoiceAdapter(
     private val onChoiceClick = View.OnClickListener { view ->
         val choice = view.getTag(R.id.choice_data) as Choice
         if (selectedChoices.contains(choice)) {
-            choices.remove(choice)
+            selectedChoices.remove(choice)
             choiceCallback.onChoiceUnSelected(choice, view)
         } else {
-            choices.add(choice)
+            selectedChoices.add(choice)
             choiceCallback.onChoiceSelected(choice, view)
         }
     }
