@@ -17,13 +17,7 @@ class ChoiceAdapter(
     private val layoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChoiceVH {
-        return ChoiceVH(
-            layoutInflater.inflate(
-                layoutRes,
-                parent,
-                false
-            )
-        ).apply {
+        return ChoiceVH(layoutInflater.inflate(layoutRes, parent, false)).apply {
             itemView.setOnClickListener(onChoiceClick)
         }
     }
