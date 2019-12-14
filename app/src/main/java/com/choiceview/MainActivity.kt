@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), ChoiceCallback {
         }
     }
 
-    override fun onChoiceUnSelected(choice: Choice, view: View) {
+    override fun onChoiceUnselected(choice: Choice, view: View) {
         view.tv.apply {
             text = context.getString(R.string.unselect_text)
             setBackgroundColor(

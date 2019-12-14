@@ -31,7 +31,7 @@ class ChoiceAdapter(
         if (selectedChoices.contains(choice)) {
             choiceCallback.onChoiceSelected(choice, itemView)
         } else {
-            choiceCallback.onChoiceUnSelected(choice, itemView)
+            choiceCallback.onChoiceUnselected(choice, itemView)
         }
     }
 
@@ -51,5 +51,5 @@ class ChoiceAdapter(
         notifyDataSetChanged()
     }
 
-    class ChoiceVH(view: View) : RecyclerView.ViewHolder(view)
+    inner class ChoiceVH(view: View) : RecyclerView.ViewHolder(view)
 }
