@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.choiceadapter.Choice
 import com.choiceadapter.ChoiceAdapter
 import com.choiceadapter.ChoiceCallback
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,7 +17,10 @@ class MainActivity : AppCompatActivity(), ChoiceCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val options = listOf(Option(1), Option(2), Option(3), Option(4))
+        val options = mutableListOf<Option>()
+        for (i in 0..10) {
+            options.add(Option(i))
+        }
 
         val choiceAdapter = ChoiceAdapter(this, R.layout.layout_test_choice, this, 2)
         choiceAdapter.updateData(options)
@@ -24,9 +28,9 @@ class MainActivity : AppCompatActivity(), ChoiceCallback {
         rv.adapter = choiceAdapter
     }
 
-    override fun onChoiceSelected(choice: com.choiceadapter.Choice, view: View) {
+    override fun onChoiceSelected(choice: Choice, view: View) {
         view.tv.apply {
-            text = "This is selected now"
+            text = context.getString(R.string.select_text)
             setBackgroundColor(
                 ContextCompat.getColor(
                     this@MainActivity,
@@ -36,31 +40,15 @@ class MainActivity : AppCompatActivity(), ChoiceCallback {
         }
     }
 
-    override fun onChoiceUnSelected(choice: com.choiceadapter.Choice, view: View) {
+    override fun onChoiceUnSelected(choice: Choice, view: View) {
         view.tv.apply {
-            text = "This is unselected now"
+            text = context.getString(R.string.unselect_text)
             setBackgroundColor(
                 ContextCompat.getColor(
                     this@MainActivity,
                     android.R.color.holo_green_light
                 )
             )
-        }
-    }
-
-    class Option(val id: Int) : com.choiceadapter.Choice {
-
-        override fun equals(other: Any?): Boolean {
-            if (other !is Option) return false
-            return this.id == other.id
-        }
-
-        override fun hashCode(): Int {
-            return id
-        }
-
-        override fun toString(): String {
-            return "Option: $id"
         }
     }
 }
