@@ -1,4 +1,4 @@
-package com.choiceview
+package com.choiceadapter
 
 interface Choice {
     override fun equals(other: Any?): Boolean

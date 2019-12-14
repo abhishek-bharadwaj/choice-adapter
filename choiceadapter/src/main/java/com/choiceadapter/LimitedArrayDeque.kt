@@ -1,4 +1,4 @@
-package com.choiceview
+package com.choiceadapter
 
 import java.util.*
 

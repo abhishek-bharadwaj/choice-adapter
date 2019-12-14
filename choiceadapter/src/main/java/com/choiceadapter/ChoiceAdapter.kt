@@ -1,4 +1,4 @@
-package com.choiceview
+package com.choiceadapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -17,7 +17,13 @@ class ChoiceAdapter(
     private val layoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChoiceVH {
-        return ChoiceVH(layoutInflater.inflate(layoutRes, parent, false)).apply {
+        return ChoiceVH(
+            layoutInflater.inflate(
+                layoutRes,
+                parent,
+                false
+            )
+        ).apply {
             itemView.setOnClickListener(onChoiceClick)
         }
     }
@@ -49,12 +55,6 @@ class ChoiceAdapter(
             selectedChoices.add(choice)
         }
         notifyDataSetChanged()
-    }
-
-    interface ChoiceCallback {
-        fun onChoiceSelected(choice: Choice, view: View)
-
-        fun onChoiceUnSelected(choice: Choice, view: View)
     }
 
     class ChoiceVH(view: View) : RecyclerView.ViewHolder(view)
