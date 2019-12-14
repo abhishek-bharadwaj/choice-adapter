@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), ChoiceAdapter.ChoiceCallback {
         val options = listOf(Option(1), Option(2), Option(3), Option(4))
 
         val choiceAdapter = ChoiceAdapter(this, R.layout.layout_test_choice, this)
-        choiceAdapter.updateData(options, 1)
+        choiceAdapter.updateData(options)
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = choiceAdapter
     }

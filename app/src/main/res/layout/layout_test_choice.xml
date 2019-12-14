@@ -8,6 +8,5 @@
     android:background="@android:color/holo_purple"
     android:fontFamily="sans-serif"
     android:padding="16dp"
-    android:text="This is default state"
     android:textColor="#fff"
     tools:text="This is a TextView" />

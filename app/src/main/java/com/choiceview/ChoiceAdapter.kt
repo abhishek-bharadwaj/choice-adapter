@@ -7,19 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class ChoiceAdapter(
-    context: Context,
-    private val layoutRes: Int,
-    private val choiceCallback: ChoiceCallback
-) :
-    RecyclerView.Adapter<ChoiceAdapter.ChoiceVH>() {
-
-    private var minSelection: Int = 1
-    private var maxSelection: Int = 0
-
-    private val layoutInflater = LayoutInflater.from(context)
+    context: Context, private val layoutRes: Int,
+    private val choiceCallback: ChoiceCallback, minSelection: Int = 1
+) : RecyclerView.Adapter<ChoiceAdapter.ChoiceVH>() {
 
     private val choices = mutableListOf<Choice>()
-    private val selectedChoices = mutableListOf<Choice>()
+    private val selectedChoices = LimitedArrayDeque<Choice>(minSelection)
+
+    private val layoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChoiceVH {
         return ChoiceVH(layoutInflater.inflate(layoutRes, parent, false)).apply {
@@ -33,13 +28,14 @@ class ChoiceAdapter(
         val choice = choices[position]
         val itemView = holder.itemView
         itemView.setTag(R.id.choice_data, choice)
+        if (selectedChoices.contains(choice)) {
+            choiceCallback.onChoiceSelected(choice, itemView)
+        } else {
+            choiceCallback.onChoiceUnSelected(choice, itemView)
+        }
     }
 
-    fun updateData(
-        choices: List<Choice>, minSelection: Int = 1, maxSelection: Int = choices.size
-    ) {
-        this.minSelection = minSelection
-        this.maxSelection = maxSelection
+    fun updateData(choices: List<Choice>) {
         this.choices.clear()
         this.choices.addAll(choices)
         notifyDataSetChanged()
@@ -49,11 +45,10 @@ class ChoiceAdapter(
         val choice = view.getTag(R.id.choice_data) as Choice
         if (selectedChoices.contains(choice)) {
             selectedChoices.remove(choice)
-            choiceCallback.onChoiceUnSelected(choice, view)
         } else {
             selectedChoices.add(choice)
-            choiceCallback.onChoiceSelected(choice, view)
         }
+        notifyDataSetChanged()
     }
 
     interface ChoiceCallback {
