@@ -35,6 +35,12 @@ class ChoiceAdapter(
         }
     }
 
+    /**
+     * To pass choices.
+     *
+     * * @param choices List of choice
+     *
+     */
     fun updateData(choices: List<Choice>) {
         this.choices.clear()
         this.choices.addAll(choices)
