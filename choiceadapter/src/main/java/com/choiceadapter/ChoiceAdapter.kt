@@ -12,7 +12,7 @@ class ChoiceAdapter(
 ) : RecyclerView.Adapter<ChoiceAdapter.ChoiceVH>() {
 
     private val choices = mutableListOf<Choice>()
-    private val selectedChoices = LimitedArrayDeque<Choice>(minSelection)
+    private val selectedChoices = LimitedQueue<Choice>(minSelection)
 
     private val layoutInflater = LayoutInflater.from(context)
 
