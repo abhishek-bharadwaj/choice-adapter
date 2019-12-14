@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tv"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
     android:layout_margin="4dp"
-    android:background="@android:color/holo_purple"
-    android:fontFamily="sans-serif"
-    android:padding="16dp"
-    android:textColor="#fff"
-    tools:text="This is a TextView" />
+    app:cardBackgroundColor="@android:color/holo_purple"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="4dp"
+    tools:text="This is a TextView">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        android:layout_margin="16dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        tools:text="Sample text" />
+
+    <RadioButton
+        android:id="@+id/rb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:layout_margin="16dp"
+        android:clickable="false"
+        app:buttonTint="@android:color/white" />
+</androidx.cardview.widget.CardView>

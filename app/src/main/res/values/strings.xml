@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">ChoiceView</string>
-    <string name="select_text">This is selected now</string>
-    <string name="unselect_text">This is unselected now</string>
 </resources>

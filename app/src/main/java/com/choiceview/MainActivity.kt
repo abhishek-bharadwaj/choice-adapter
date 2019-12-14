@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.layout_test_choice.view.*
 
 class MainActivity : AppCompatActivity(), ChoiceCallback {
 
+    private lateinit var choiceAdapter: ChoiceAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,33 +24,26 @@ class MainActivity : AppCompatActivity(), ChoiceCallback {
             options.add(Option(i))
         }
 
-        val choiceAdapter = ChoiceAdapter(this, R.layout.layout_test_choice, this, 2)
+        choiceAdapter = ChoiceAdapter(this, R.layout.layout_test_choice, this, 1)
         choiceAdapter.updateData(options)
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = choiceAdapter
     }
 
     override fun onChoiceSelected(choice: Choice, view: View) {
-        view.tv.apply {
-            text = context.getString(R.string.select_text)
-            setBackgroundColor(
-                ContextCompat.getColor(
-                    this@MainActivity,
-                    android.R.color.holo_blue_light
-                )
-            )
-        }
+        updateItemUI(choice, view, android.R.color.holo_blue_light, true)
     }
 
     override fun onChoiceUnselected(choice: Choice, view: View) {
-        view.tv.apply {
-            text = context.getString(R.string.unselect_text)
-            setBackgroundColor(
-                ContextCompat.getColor(
-                    this@MainActivity,
-                    android.R.color.holo_green_light
-                )
-            )
+        updateItemUI(choice, view, android.R.color.holo_green_light, false)
+    }
+
+    private fun updateItemUI(choice: Choice, view: View, bgColor: Int, shouldCheck: Boolean) {
+        view.tv.text = choice.toString()
+        view.container.setCardBackgroundColor(ContextCompat.getColor(this@MainActivity, bgColor))
+        view.rb.apply {
+            isChecked = shouldCheck
+            setTag(R.id.choice_data, choice)
         }
     }
 }
