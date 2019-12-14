@@ -21,4 +21,10 @@ interface ChoiceCallback {
      *
      */
     fun onChoiceUnselected(choice: Choice, view: View)
+
+    /**
+     * Call back for already selecting specified choices.
+     *
+     */
+    fun alreadySelectedMaxChoices()
 }

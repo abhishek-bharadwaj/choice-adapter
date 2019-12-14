@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
  * * @param layoutRes Layout resource which needs to be inflated.
  * * @param choiceCallback ChoicesCallback which gets triggered on item select and un-select.
  * * @param minSelection Number of selection allowed.
+ * * @param flexible Should allow selection more than allowed by min selection. If allowed
+ * * it will pop first selection out and add new one.
  *
  * Make sure if your layoutResource contains any clickable items like RadioButton, CheckBox
  * set them as clickable false, so that Choice view holder can handle clicks.
@@ -20,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
  */
 class ChoiceAdapter(
     context: Context, private val layoutRes: Int,
-    private val choiceCallback: ChoiceCallback, minSelection: Int = 1
+    private val choiceCallback: ChoiceCallback, minSelection: Int = 1, flexible: Boolean = true
 ) : RecyclerView.Adapter<ChoiceAdapter.ChoiceVH>() {
 
     private val choices = mutableListOf<Choice>()
@@ -66,6 +68,10 @@ class ChoiceAdapter(
             selectedChoices.remove(choice)
             notifyItemChanged(indexOfItemToRemoved)
         } else {
+            if (minSelection > 1 && !flexible && minSelection == selectedChoices.size()) {
+                choiceCallback.alreadySelectedMaxChoices()
+                return@OnClickListener
+            }
             selectedChoices.add(choice)
             notifyItemChanged(choices.size - 1)
         }

@@ -52,6 +52,13 @@ class LimitedQueue<T>(private val maxSize: Int) {
     fun indexOf(t: T) = queue.indexOf(t)
 
     /**
+     * Returns the number of elements in this queue.
+     *
+     * @return the number of elements in this queue
+     */
+    fun size() = queue.size
+
+    /**
      * Returns an array containing all of the elements in this queue
      * in proper sequence (from first to last element).
      *
