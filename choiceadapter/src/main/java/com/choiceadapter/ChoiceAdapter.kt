@@ -6,6 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * ChoiceAdapter is helpful in implementing single and multi-select choices.
+ *
+ * * @param context.
+ * * @param layoutRes Layout resource which needs to be inflated.
+ * * @param choiceCallback ChoicesCallback which gets triggered on item select and un-select.
+ * * @param minSelection Number of selection allowed.
+ *
+ * Make sure if your layoutResource contains any clickable items like RadioButton, CheckBox
+ * set them as clickable false, so that Choice view holder can handle clicks.
+ *
+ */
 class ChoiceAdapter(
     context: Context, private val layoutRes: Int,
     private val choiceCallback: ChoiceCallback, minSelection: Int = 1
