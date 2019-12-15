@@ -43,11 +43,11 @@ class MultiSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
     }
 
     override fun onChoiceSelected(choice: Choice, view: View) {
-        updateItemUI(choice, view, android.R.color.holo_purple, android.R.color.white)
+        updateItemUI(choice, view, R.color.multi_select_2, android.R.color.white)
     }
 
     override fun onChoiceUnselected(choice: Choice, view: View) {
-        updateItemUI(choice, view, android.R.color.white, android.R.color.black)
+        updateItemUI(choice, view, R.color.multi_select_1, android.R.color.black)
     }
 
     override fun alreadySelectedMaxChoices() {

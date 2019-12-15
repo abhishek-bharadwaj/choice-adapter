@@ -43,7 +43,7 @@ class SingleSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
     }
 
     override fun onChoiceSelected(choice: Choice, view: View) {
-        updateItemUI(choice, view, android.R.color.holo_blue_light, android.R.color.white, true)
+        updateItemUI(choice, view, R.color.single_select_2, android.R.color.white, true)
     }
 
     override fun onChoiceUnselected(choice: Choice, view: View) {
