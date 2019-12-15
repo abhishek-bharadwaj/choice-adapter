@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.choiceview.fragments.BaseSelectionFragment
-import com.choiceview.fragments.SingleSelectionFragment
+import com.choiceview.fragments.MultiSelectionFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,13 +14,15 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val SINGLE_SELECTION_FRAGMENT = "single_selection"
+        const val MULTI_SELECTION_FRAGMENT = "multi_selection"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        addFragment(SingleSelectionFragment(), SINGLE_SELECTION_FRAGMENT)
+//        addFragment(SingleSelectionFragment(), SINGLE_SELECTION_FRAGMENT)
+        addFragment(MultiSelectionFragment(), MULTI_SELECTION_FRAGMENT)
 
         btn.setOnClickListener {
             val currentFragment = supportFragmentManager.findFragmentByTag(

@@ -2,10 +2,10 @@ package com.choiceview.data
 
 import com.choiceadapter.Choice
 
-class Option(val id: Int) : Choice {
+class SingleSelectionData(val id: Int) : Choice {
 
     override fun equals(other: Any?): Boolean {
-        if (other !is Option) return false
+        if (other !is SingleSelectionData) return false
         return this.id == other.id
     }
 

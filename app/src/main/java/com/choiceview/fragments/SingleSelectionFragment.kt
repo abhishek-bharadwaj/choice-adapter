@@ -11,9 +11,9 @@ import com.choiceadapter.Choice
 import com.choiceadapter.ChoiceAdapter
 import com.choiceadapter.ChoiceCallback
 import com.choiceview.R
-import com.choiceview.data.Option
+import com.choiceview.data.SingleSelectionData
 import kotlinx.android.synthetic.main.fragment_single_selection.*
-import kotlinx.android.synthetic.main.layout_test_choice.view.*
+import kotlinx.android.synthetic.main.item_single_choice.view.*
 
 class SingleSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
 
@@ -28,13 +28,13 @@ class SingleSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val options = mutableListOf<Option>()
+        val options = mutableListOf<SingleSelectionData>()
         for (i in 0..10) {
-            options.add(Option(i))
+            options.add(SingleSelectionData(i))
         }
 
         choiceAdapter = ChoiceAdapter(
-            requireContext(), R.layout.layout_test_choice, this, 1
+            requireContext(), R.layout.item_single_choice, this, 1
         )
         choiceAdapter.updateData(options)
         rv_single_select.layoutManager = LinearLayoutManager(requireContext())
