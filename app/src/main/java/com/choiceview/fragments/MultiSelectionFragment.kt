@@ -43,11 +43,11 @@ class MultiSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
     }
 
     override fun onChoiceSelected(choice: Choice, view: View) {
-        updateItemUI(choice, view, android.R.color.holo_purple)
+        updateItemUI(choice, view, android.R.color.holo_purple, android.R.color.white)
     }
 
     override fun onChoiceUnselected(choice: Choice, view: View) {
-        updateItemUI(choice, view, android.R.color.white)
+        updateItemUI(choice, view, android.R.color.white, android.R.color.black)
     }
 
     override fun alreadySelectedMaxChoices() {
@@ -58,8 +58,11 @@ class MultiSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
         return choiceAdapter.getSelectedChoices()
     }
 
-    private fun updateItemUI(choice: Choice, view: View, bgColor: Int) {
-        view.tv.text = choice.toString()
+    private fun updateItemUI(choice: Choice, view: View, bgColor: Int, textColor: Int) {
+        view.tv.apply {
+            text = choice.toString()
+            setTextColor(ContextCompat.getColor(requireContext(), textColor))
+        }
         view.container.setCardBackgroundColor(ContextCompat.getColor(requireContext(), bgColor))
     }
 }
