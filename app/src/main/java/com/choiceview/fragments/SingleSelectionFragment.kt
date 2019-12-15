@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.choiceadapter.Choice
 import com.choiceadapter.ChoiceAdapter
@@ -16,7 +15,7 @@ import com.choiceview.data.Option
 import kotlinx.android.synthetic.main.fragment_single_selection.*
 import kotlinx.android.synthetic.main.layout_test_choice.view.*
 
-class SingleSelectionFragment : Fragment(), ChoiceCallback {
+class SingleSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
 
     private lateinit var choiceAdapter: ChoiceAdapter
 
@@ -56,6 +55,10 @@ class SingleSelectionFragment : Fragment(), ChoiceCallback {
             getString(R.string.max_choices_selected),
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+    override fun getSelectedChoices(): Array<Any> {
+        return choiceAdapter.getSelectedChoices()
     }
 
     private fun updateItemUI(choice: Choice, view: View, bgColor: Int, shouldCheck: Boolean) {

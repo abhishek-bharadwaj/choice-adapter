@@ -61,6 +61,8 @@ class ChoiceAdapter(
         notifyDataSetChanged()
     }
 
+    fun getSelectedChoices() = selectedChoices.toArray()
+
     private val onChoiceClick = View.OnClickListener { view ->
         val choice = view.getTag(R.id.choice_data) as Choice
         if (selectedChoices.contains(choice)) {
