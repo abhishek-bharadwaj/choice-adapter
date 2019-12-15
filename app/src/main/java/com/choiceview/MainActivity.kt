@@ -45,6 +45,14 @@ class MainActivity : AppCompatActivity() {
                 MultiSelectionFragment()
         }
 
+        override fun getPageTitle(position: Int): CharSequence? {
+            return if (position == 0) {
+                getString(R.string.single_select_title)
+            } else {
+                getString(R.string.multi_select_title)
+            }
+        }
+
         override fun setPrimaryItem(container: ViewGroup, position: Int, any: Any) {
             if (any is BaseSelectionFragment) {
                 currentFragment = any

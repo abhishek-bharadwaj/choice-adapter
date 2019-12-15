@@ -11,7 +11,7 @@ import com.choiceadapter.Choice
 import com.choiceadapter.ChoiceAdapter
 import com.choiceadapter.ChoiceCallback
 import com.choiceview.R
-import com.choiceview.data.SingleSelectionData
+import com.choiceview.data.MultiSelectionData
 import kotlinx.android.synthetic.main.fragment_single_selection.*
 import kotlinx.android.synthetic.main.item_single_choice.view.*
 
@@ -28,9 +28,10 @@ class SingleSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val options = mutableListOf<SingleSelectionData>()
-        for (i in 0..10) {
-            options.add(SingleSelectionData(i))
+        val options = mutableListOf<MultiSelectionData>()
+        val randomTexts = resources.getStringArray(R.array.random_multi_select_texts)
+        for (i in randomTexts.indices) {
+            options.add(MultiSelectionData(i, randomTexts[i]))
         }
 
         choiceAdapter = ChoiceAdapter(
@@ -42,11 +43,11 @@ class SingleSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
     }
 
     override fun onChoiceSelected(choice: Choice, view: View) {
-        updateItemUI(choice, view, android.R.color.holo_blue_light, true)
+        updateItemUI(choice, view, android.R.color.holo_blue_light, android.R.color.white, true)
     }
 
     override fun onChoiceUnselected(choice: Choice, view: View) {
-        updateItemUI(choice, view, android.R.color.holo_green_light, false)
+        updateItemUI(choice, view, android.R.color.white, android.R.color.black, false)
     }
 
     override fun alreadySelectedMaxChoices() {
@@ -61,8 +62,14 @@ class SingleSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
         return choiceAdapter.getSelectedChoices()
     }
 
-    private fun updateItemUI(choice: Choice, view: View, bgColor: Int, shouldCheck: Boolean) {
-        view.tv.text = choice.toString()
+    private fun updateItemUI(
+        choice: Choice, view: View, bgColor: Int,
+        textColor: Int, shouldCheck: Boolean
+    ) {
+        view.tv.apply {
+            text = choice.toString()
+            setTextColor(ContextCompat.getColor(requireContext(), textColor))
+        }
         view.container.setCardBackgroundColor(ContextCompat.getColor(requireContext(), bgColor))
         view.rb.apply {
             isChecked = shouldCheck

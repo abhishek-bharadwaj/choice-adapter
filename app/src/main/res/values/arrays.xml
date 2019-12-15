@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="random_single_select_texts">
+        <item>I would have gotten the promotion, but my attendance wasn\'t good enough.</item>
+        <item>Rock music approaches at high velocity.</item>
+        <item>We have never been to Asia, nor have we visited Africa.</item>
+        <item>She borrowed the book from him many years ago and hasn\'t yet returned it.</item>
+        <item>Is it free?</item>
+        <item>The body may perhaps compensates for the loss of a true metaphysics.</item>
+        <item>He turned in the research paper on Friday; otherwise, he would have not passed the class.</item>
+        <item>My Mum tries to be cool by saying that she likes all the same things that I do.</item>
+        <item>When I was little I had a car door slammed shut on my hand. I still remember it quite vividly.</item>
+        <item>Sometimes it is better to just walk away from things and go back to them later when you\'re in a better frame of mind.</item>
+        <item>I am never at home on Sundays.</item>
+        <item>Christmas is coming.</item>
+        <item>Please wait outside of the house.</item>
+        <item>She wrote him a long letter, but he didn\'t read it.</item>
+        <item>Let me help you with your baggage.</item>
+    </string-array>
+
     <string-array name="random_multi_select_texts">
         <item>I will never be this young again. Ever. Oh damn… I just got older.</item>
         <item>Someone I know recently combined Maple Syrup &amp; buttered Popcorn thinking it would taste like caramel popcorn. It didn\'t and they don\'t recommend anyone else do it either.</item>
@@ -14,7 +32,7 @@
         <item>She did not cheat on the test, for it was not the right thing to do.</item>
         <item>Where do random thoughts come from?</item>
         <item>I checked to make sure that he was still alive.</item>
-        <item>I was very proud of my nickname throughout high school but today- I couldn’t be any different to what my nickname was.</item>
+        <item>I was very proud of my nickname throughout high school but today- I couldn\'t be any different to what my nickname was.</item>
         <item>She folded her handkerchief neatly.</item>
     </string-array>
 </resources>
