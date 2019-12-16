@@ -36,7 +36,7 @@ class SingleSelectionFragment : BaseSelectionFragment(), ChoiceCallback {
 
         choiceAdapter = ChoiceAdapter(
             context = requireContext(), layoutRes = R.layout.item_single_choice,
-            choiceCallback = this, minSelection = 1, flexible = false
+            choiceCallback = this, maxSelection = 1, flexible = false
         )
         choiceAdapter.updateData(options)
         rv_single_select.layoutManager = LinearLayoutManager(requireContext())
