@@ -1,6 +1,25 @@
 # choice-adapter
 A flexible implementation of RecylerView to manage single and multi select custom views
 
+### Gradle
+To get a Git project into your build:
+
+**Step 1.** Add the JitPack repository to your build file. Add this in your root build.gradle at the end of repositories.
+```
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+**Step 2.** Add the dependency
+```
+dependencies {
+    implementation 'com.github.abhishek-bharadwaj:choice-adapter:v1.1.1'
+}
+```
+
 ### Usage
 
 **Creating adapter**
