@@ -3,7 +3,7 @@ A flexible implementation of RecylerView to manage single and multi select custo
 
 ### Usage
 
-Creating adapter
+**Creating adapter**
 ```
 val choiceAdapter = ChoiceAdapter(
     context = requireContext(), layoutRes = R.layout.item_single_choice,
@@ -11,14 +11,14 @@ val choiceAdapter = ChoiceAdapter(
 )
 ```
 
-Updating with options. Option should be a instance of [Choice](https://github.com/abhishek-bharadwaj/choice-adapter/blob/master/choiceadapter/src/main/java/com/choiceadapter/Choice.kt)
+**Updating with options. Option should be a instance of [Choice](https://github.com/abhishek-bharadwaj/choice-adapter/blob/master/choiceadapter/src/main/java/com/choiceadapter/Choice.kt)**
 ```
 choiceAdapter.updateData(options)
 recylerview.layoutManager = LinearLayoutManager(requireContext())
 recylerview.adapter = choiceAdapter
 ```
 
-Adapter callbacks
+**Adapter callbacks**
 ```
 override fun onChoiceSelected(choice: Choice, view: View) {
     // This method will be called when option item is selected.
@@ -33,7 +33,7 @@ override fun alreadySelectedMaxChoices() {
 }
 ```
 
-ChoiceAdapter has these public methods
+**ChoiceAdapter has these public methods**
 - To update data in ChoiceAdapter
     ```
     fun updateData(choices: List<Choice>)
