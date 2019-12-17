@@ -1,5 +1,5 @@
 # choice-adapter
-A flexible implementation of RecylerView to manage single and multi select custom views
+A flexible implementation of RecylerView Adapter to manage single and multi select custom views
 
 ### Gradle
 To get a Git project into your build:
